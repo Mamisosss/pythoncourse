@@ -20,6 +20,13 @@ def parser(a):
         return []
     arbeitlist = []
     for job in content["data"]:
+        if len(job["job_types"]) == 2:
+            contract_type, contract_time = job["job_types"]
+        elif len(job["job_types"]) == 1:
+            contract_type = job["job_types"]
+            contract_time = ""
+        else :
+            contract_type, contract_time = ["",""]
         formatted_date = datetime.fromtimestamp(job["created_at"])
         arbeitlist.append(
             {
@@ -28,7 +35,12 @@ def parser(a):
                 "location": job["location"],
                 "remote": job["remote"],
                 "created_at": formatted_date.strftime("%d/%m/%Y"),
-                "source": "arbeit"
+                "source": "arbeit",
+                "salary": "",
+                "contract_type": contract_type,
+                "contract_time": contract_time,
+                "url": job["url"],
+                "description": job["description"]
             }
         )
     return arbeitlist
