@@ -1,0 +1,10 @@
+{
+    "api": [
+            {"name": "adzuna", "auth": "query", "type": "mandatory","credentials": {"app_id": "ADZUNA_API_ID", "app_key": "ADZUNA_API_KEY"}, "url":"https://api.adzuna.com/v1/api/jobs/fr/search/1?"},
+            {"name": "arbeit", "credentials": {},"url": "https://www.arbeitnow.com/api/job-board-api?"},
+            {"name": "themuse", "auth": "query", "type": "optional","credentials": {"api_key": "THEMUSE_API_KEY"}, "url": "https://www.themuse.com/api/public/jobs?category=Computer%20and%20IT&category=Product%20Management&category=Project%20Management&location=Flexible%20%2F%20Remote&page=1&descending=false"}
+],"title":
+            ["technical","project","delivery"],
+"location":
+            ["United Kingdom","Paris","Remote"]
+}

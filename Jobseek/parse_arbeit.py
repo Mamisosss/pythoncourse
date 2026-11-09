@@ -1,12 +1,27 @@
 import requests
 from datetime import datetime
+from decoder import decoder
+import os
+from doctor import doctor
+from config import Sources
+from dotenv import load_dotenv
 
-def parser(a):
+load_dotenv()
+
+def main():
+    source = Sources[1] 
+    if doctor(source) == "OK":
+        return parser(source)
+    else :
+        return []
+
+def parser(s):
     params = {
                 "page" : 1
                 }
+    header = {}
     try:
-        response = requests.get(a, params=params, timeout=(30, 60))
+        response = requests.get(s.get("url"), headers=header, params=params, timeout=(30, 60))
         response.raise_for_status()
         content = response.json()
     except requests.HTTPError:
@@ -27,6 +42,7 @@ def parser(a):
             contract_time = ""
         else :
             contract_type, contract_time = ["",""]
+        description = decoder(job["description"])
         formatted_date = datetime.fromtimestamp(job["created_at"])
         arbeitlist.append(
             {
@@ -40,7 +56,9 @@ def parser(a):
                 "contract_type": contract_type,
                 "contract_time": contract_time,
                 "url": job["url"],
-                "description": job["description"]
+                "description": description
             }
         )
     return arbeitlist
+if __name__ == "__main__":
+    main()
