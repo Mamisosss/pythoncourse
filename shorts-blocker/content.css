@@ -1,0 +1,62 @@
+/* Everything is scoped to html.sb-on so toggling off restores YouTube instantly. */
+
+/* Shorts shelves on home / search / subscriptions */
+html.sb-on ytd-rich-shelf-renderer[is-shorts],
+html.sb-on ytd-reel-shelf-renderer,
+html.sb-on ytm-reel-shelf-renderer,
+html.sb-on ytm-shorts-lockup-view-model,
+html.sb-on ytm-shorts-lockup-view-model-v2,
+html.sb-on grid-shelf-view-model:has(a[href^="/shorts/"]),
+
+/* Individual video cards that link to a Short */
+html.sb-on ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html.sb-on ytd-video-renderer:has(a[href^="/shorts/"]),
+html.sb-on ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html.sb-on ytd-compact-video-renderer:has(a[href^="/shorts/"]),
+html.sb-on ytm-video-with-context-renderer:has(a[href^="/shorts/"]),
+html.sb-on yt-lockup-view-model:has(a[href^="/shorts/"]),
+
+/* Sidebar "Shorts" entry (full + mini guide) and mobile bottom tab */
+html.sb-on ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html.sb-on ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html.sb-on ytm-pivot-bar-item-renderer:has(a[href^="/shorts"]),
+
+/* "Shorts" tab on channel pages + filter chip in search */
+html.sb-on yt-tab-shape[tab-title="Shorts"],
+html.sb-on yt-chip-cloud-chip-renderer:has(a[href^="/shorts"]) {
+  display: none !important;
+}
+
+/* Full-screen message shown on /shorts/... pages */
+#sb-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+  background: #0f1a14;
+  color: #f3efe0;
+  font-family: system-ui, sans-serif;
+}
+#sb-overlay h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  line-height: 1.3;
+}
+#sb-overlay p {
+  margin: 0;
+  opacity: 0.7;
+}
+#sb-overlay a {
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #d4af37;
+  color: #0f1a14;
+  font-weight: 700;
+  text-decoration: none;
+}

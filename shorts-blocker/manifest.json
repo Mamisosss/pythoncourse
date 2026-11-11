@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Shorts Blocker",
+  "version": "1.0.0",
+  "description": "Blocks YouTube Shorts only. Toggle on/off from the popup.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Shorts Blocker",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*", "*://m.youtube.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "shorts-blocker@local" }
+  }
+}
